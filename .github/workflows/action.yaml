@@ -26,9 +26,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3.8.1
         with:
-          node-version: 16
+          node-version: latest
 
       - name: Install dependencies
         working-directory: react-app
@@ -39,7 +39,7 @@ jobs:
         run: npm run build
 
       - name: Create artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: react-app
           path: react-app/dist/
