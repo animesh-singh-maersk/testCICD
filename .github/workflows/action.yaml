@@ -31,13 +31,15 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
+        working-directory: react-app
         run: npm install
 
       - name: Build React app
+        working-directory: react-app
         run: npm run build
 
       - name: Create artifact
         uses: actions/upload-artifact@v2
         with:
           name: react-app
-          path: build/
+          path: react-app/build/
