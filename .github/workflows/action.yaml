@@ -32,8 +32,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: generate image path
         run: |
-          echo "imagename=ghcr.io/${{github.repository}}:${github.sha:0:7}" | tr '[:upper:]' '[:lower:]'
-          echo "imagename=ghcr.io/${{github.repository}}:${github.sha:0:7}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
+          echo "imagename=ghcr.io/${{github.repository}}:${{github.sha:0:7}}" | tr '[:upper:]' '[:lower:]'
+          echo "imagename=ghcr.io/${{github.repository}}:${{github.sha:0:7}}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
       - name: Print env Again
         run: env
       # - name: Build and push
