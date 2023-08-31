@@ -1,5 +1,5 @@
 name: testCICD
-
+description: Something
 on:
   push:
     branches: [main]
@@ -18,4 +18,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: env
+  Docker_build:
+    name: Building Docker Image
+    needs: [Print_ENV]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: generate image path
+        run: |
+          echo "imagename=ghcr.io/${{github.repository}}:${GITHUB_SHA:0:7}" | tr '[:upper:]' '[:lower:]'
+          echo "imagename=ghcr.io/${{github.repository}}:${GITHUB_SHA:0:7}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
+      - name: Print env Again
+        run: env
+      # - name: Build and push
+        # uses: docker/build-push-action@v3
+        # with:
+          # context: Docker
+          # push: true
+          # tags: ${{env.imagename}}
   
