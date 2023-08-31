@@ -15,6 +15,7 @@ permissions:
 jobs:
   Print_ENV:
     name: Print ENV
+    runs-on: ubuntu-latest
     steps:
       - run: env
       - run: exit 0
