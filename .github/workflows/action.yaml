@@ -36,10 +36,10 @@ jobs:
           echo "imagename=ghcr.io/${{github.repository}}:${GITHUB_SHA:0:7}" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
       - name: Print env Again
         run: env
-      # - name: Build and push
-        # uses: docker/build-push-action@v3
-        # with:
-          # context: Docker
-          # push: true
-          # tags: ${{env.imagename}}
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: Docker
+          push: true
+          tags: ${{env.imagename}}
   
