@@ -38,8 +38,8 @@ jobs:
         working-directory: react-app
         run: npm run build
 
-      - name: List contents of build directory
-        run: ls -R react-app/build/
+      - name: List contents of root directory
+        run: ls -R
 
       - name: Create artifact
         uses: actions/upload-artifact@v2
