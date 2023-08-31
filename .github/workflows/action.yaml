@@ -1,5 +1,4 @@
 name: testCICD
-description: Something
 on:
   push:
     branches: [main]
